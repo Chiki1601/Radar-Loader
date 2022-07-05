@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+}
+
+.loader {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+  border-radius: 50%;
+  box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25), 10px 10px 70px rgba(0, 0, 0, 0.25);
+  border: 2px solid #222;
+  overflow: hidden;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  inset: 30px;
+  border: 3px dashed #666;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25), inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  animation: radarAnimation 30s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 3px dashed #666;
+  border-radius: 50%;
+  box-shadow: inset -5px -5px 25px rgba(0, 0, 0, 0.25), inset 5px 5px 35px rgba(0, 0, 0, 0.25);
+  z-index: 11;
+  animation: radarAnimation 10s linear infinite;
+}
+
+.loader .radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background: transparent;
+  transform-origin: top left;
+  overflow: hidden;
+  animation: radarAnimation 2s linear infinite;
+}
+
+@keyframes radarAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader .radar::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b7108;
+  opacity: 0.75;
+  transform-origin: top left;
+  transform: rotate(35deg);
+  filter: blur(30px) drop-shadow(50px 50px 50px #0b7108);
+}
